@@ -21,7 +21,7 @@ proc sql;
 	create table mhsib as
 	select 	a.lopnr, 
 			b.lopnr as relative,
-			"mhsib" as gr
+			"mh" as gr
 	from 	crime2.v_parent as a, 
 			crime2.v_parent as b
 	where	a.lopnrmor = b.lopnrmor &
@@ -38,7 +38,7 @@ proc sql;
 	create table phsib as
 	select 	a.lopnr,
 			b.lopnr as relative,
-			"phsib" as gr
+			"ph" as gr
 	from 	crime2.v_parent as a, 
 			crime2.v_parent as b
 	where	a.lopnrmor ^= b.lopnrmor &
@@ -72,3 +72,5 @@ quit;
 data kin4;
 	set fsib mhsib phsib fcn;
 run;
+
+proc freq data=kin4 order = data; tables gr; run;
