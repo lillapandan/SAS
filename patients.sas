@@ -14,6 +14,8 @@ data patients;
 		if substr(diagnos,1,4) in('299A','F840','F841','F845','F849') then Autism=1;
 		else Autism = 0;
 
+        keep lopnr ADHD Autism;
+
 run;
 
 
